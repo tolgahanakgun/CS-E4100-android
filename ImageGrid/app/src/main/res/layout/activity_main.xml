@@ -97,7 +97,7 @@
         android:layout_marginBottom="9dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="URL..."
+        android:hint="URL..."
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.781"
@@ -106,6 +106,7 @@
         app:layout_constraintVertical_bias="0.08" />
 
     <GridView
+        android:id="@+id/gridView"
         android:layout_width="304dp"
         android:layout_height="251dp"
         android:layout_marginStart="8dp"
