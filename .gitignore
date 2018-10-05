@@ -1,3 +1,6 @@
+# Ignore every folder, relevant project folders will be tracked at the end of the file
+/*
+
 # Built application files
 *.apk
 *.ap_
@@ -63,3 +66,8 @@ fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
 fastlane/readme.md
+
+# The project folders below will be tracked
+!/ImageGrid/
+!/LayoutSwitcher/
+!/WordCounter/
