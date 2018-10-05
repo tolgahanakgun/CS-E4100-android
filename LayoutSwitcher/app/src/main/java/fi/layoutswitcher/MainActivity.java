@@ -1,6 +1,7 @@
 package fi.layoutswitcher;
 
 import android.content.Context;
+import android.view.View;
 import android.widget.ImageView;
 import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
@@ -25,8 +26,10 @@ public class MainActivity extends AppCompatActivity {
                 onOffSwitch.setTextOn(Boolean.toString(isChecked));
                 if(isChecked) {
                     setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-                    TextView txtView = findViewById(R.id.textPortrait);
-                    txtView.setText("Screen mode is set to landscape");
+                    TextView textLandscape = findViewById(R.id.textLandscape);
+                    textLandscape.setVisibility(View.VISIBLE);
+                    TextView textPortrait = findViewById(R.id.textPortrait);
+                    textPortrait.setVisibility(View.INVISIBLE);
                     ImageView iv = findViewById(R.id.imageView);
                     Bitmap bMap = BitmapFactory.decodeResource(getResources(), R.drawable.butter_fly);
                     Bitmap bMapScaled = Bitmap.createScaledBitmap(bMap, 100, 100, true);
@@ -36,8 +39,10 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else {
                     setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-                    TextView txtView = findViewById(R.id.textPortrait);
-                    txtView.setText("Screen mode is set to portrait");
+                    TextView textLandscape = findViewById(R.id.textLandscape);
+                    textLandscape.setVisibility(View.INVISIBLE);
+                    TextView textPortrait = findViewById(R.id.textPortrait);
+                    textPortrait.setVisibility(View.VISIBLE);
                     ImageView iv = findViewById(R.id.imageView);
                     Bitmap bMap = BitmapFactory.decodeResource(getResources(), R.drawable.butter_fly);
                     Bitmap bMapScaled = Bitmap.createScaledBitmap(bMap, 350, 650, true);
