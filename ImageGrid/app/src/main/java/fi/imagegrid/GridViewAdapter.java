@@ -1,13 +1,11 @@
 package fi.imagegrid;
 
+import com.squareup.picasso.Picasso;
 
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
-
-import com.squareup.picasso.PicassoProvider;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -19,22 +17,16 @@ final class SampleGridViewAdapter extends BaseAdapter {
     private final Context context;
     private final List<String> urls = new ArrayList<>();
 
-    SampleGridViewAdapter(Context context) {
+    SampleGridViewAdapter(Context context, String[] urlArray) {
         this.context = context;
-
-        // Ensure we get a different ordering of images on each run.
-        Collections.addAll(urls);
-
-        // Triple up the list.
-        ArrayList<String> copy = new ArrayList<>(urls);
-        urls.addAll(copy);
-        urls.addAll(copy);
+        Collections.addAll(urls, urlArray);
     }
 
-    @Override public View getView(int position, View convertView, ViewGroup parent) {
-        ImageView view = (ImageView) convertView;
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        SquaredImageView view = (SquaredImageView) convertView;
         if (view == null) {
-            view = new ImageView(context);
+            view = new SquaredImageView(context);
             view.setScaleType(CENTER_CROP);
         }
 
@@ -42,26 +34,31 @@ final class SampleGridViewAdapter extends BaseAdapter {
         String url = getItem(position);
 
         // Trigger the download of the URL asynchronously into the image view.
-        PicassoProvider.get() //
+        Picasso.get() //
                 .load(url) //
-                .placeholder(R.drawable.placeholder) //
+                .placeholder(R.drawable.holder) //
                 .error(R.drawable.error) //
-                .fit() //
+                //.fit() //
+                .centerCrop()
+                .resize(100,70)
                 .tag(context) //
                 .into(view);
 
         return view;
     }
 
-    @Override public int getCount() {
+    @Override
+    public int getCount() {
         return urls.size();
     }
 
-    @Override public String getItem(int position) {
+    @Override
+    public String getItem(int position) {
         return urls.get(position);
     }
 
-    @Override public long getItemId(int position) {
+    @Override
+    public long getItemId(int position) {
         return position;
     }
 }
