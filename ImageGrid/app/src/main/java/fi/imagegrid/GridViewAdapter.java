@@ -10,6 +10,12 @@ import android.widget.BaseAdapter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import android.view.LayoutInflater;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import static android.widget.ImageView.ScaleType.CENTER_CROP;
 
@@ -24,14 +30,17 @@ final class SampleGridViewAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        SquaredImageView view = (SquaredImageView) convertView;
-        if (view == null) {
-            view = new SquaredImageView(context);
-            view.setScaleType(CENTER_CROP);
+        View container = (LinearLayout) convertView;
+        if (container== null) {
+            LayoutInflater inflater = (LayoutInflater) context
+                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            container = inflater.inflate(R.layout.image_container, null);
         }
 
         // Get the image URL for the current position.
         String url = getItem(position);
+        SquaredImageView squaredView = null;
+        ImageView imgView = (ImageView) container.findViewById(R.id.image);
 
         // Trigger the download of the URL asynchronously into the image view.
         Picasso.get() //
@@ -42,10 +51,14 @@ final class SampleGridViewAdapter extends BaseAdapter {
                 .centerCrop()
                 .resize(100,70)
                 .tag(context) //
-                .into(view);
+                .into(imgView);
 
-        return view;
-    }
+       // imgView = squaredView;
+        TextView author = (TextView) container.findViewById(R.id.author);
+        author.setText("Test Author");
+        return container;
+
+        }
 
     @Override
     public int getCount() {
