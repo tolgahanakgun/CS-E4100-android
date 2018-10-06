@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void sortRecent(View view){
         GridUpdater gridUpdater =  new GridUpdater();
-        gridUpdater.execute(new ImageGridView(SORT_BY_RECENT));
+        gridUpdater.execute(new ImageGridView(SORT_BY_RECENT), new ImageGridView(1));
     }
 
     private Context getContext(){
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                     jsonImages.sortByDateRecentFirst();
                     break;
             }
-            imageGridView.sampleGridViewAdapter = new SampleGridViewAdapter(getContext(),jsonImages.getImages());
+            imageGridView.sampleGridViewAdapter = new GridViewAdapter(getContext(),jsonImages);
             return imageGridView;
         }
 
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
     // holds gridView and its adapter
     private class ImageGridView{
         private GridView view;
-        private SampleGridViewAdapter sampleGridViewAdapter = null;
+        private GridViewAdapter sampleGridViewAdapter = null;
         private String url;
         private int sortBy;
         ImageGridView(int sortBy){

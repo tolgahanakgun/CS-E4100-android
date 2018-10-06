@@ -32,7 +32,7 @@ public class JSONImages {
             download(url,jsonFile);
             JSONArray jsonArray = parseJSONData(jsonFile);
             images = new ArrayList<>();
-            for(int i =0; i< jsonArray.length();i++){
+            for(int i = 0; i < jsonArray.length(); i++){
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 images.add(new JSONImage(jsonObject.getString("photo"), jsonObject.getString("author"), jsonObject.getString("date")));
             }
@@ -67,7 +67,7 @@ public class JSONImages {
     }
 
     private JSONArray parseJSONData(File file) {
-        String JSONString = null;
+        String JSONString;
         JSONArray JSONArray = null;
         try {
 

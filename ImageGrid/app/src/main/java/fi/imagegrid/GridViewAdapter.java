@@ -7,24 +7,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-final class SampleGridViewAdapter extends BaseAdapter {
-    private final Context context;
-    private final List<String> urls = new ArrayList<>();
-    private final List<String> titles = new ArrayList<>();
+import java.util.List;
 
-    SampleGridViewAdapter(Context context, List<JSONImage> images) {
+class GridViewAdapter extends BaseAdapter {
+    private final Context context;
+    private final List<JSONImage> images;
+
+    public GridViewAdapter(Context context, JSONImages images) {
         this.context = context;
-        for (JSONImage image: images  ) {
-            urls.add(image.getUrl().toString());
-            titles.add(image.getAuthor());
-        }
+        this.images = images.getImages();
     }
 
     @Override
@@ -57,12 +52,12 @@ final class SampleGridViewAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return urls.size();
+        return images.size();
     }
 
     @Override
     public String getItem(int position) {
-        return urls.get(position);
+        return images.get(position).getUrl().toString();
     }
 
     @Override
@@ -71,6 +66,6 @@ final class SampleGridViewAdapter extends BaseAdapter {
     }
 
     private String getTitle(int position){
-        return titles.get(position);
+        return images.get(position).getAuthor();
     }
 }
