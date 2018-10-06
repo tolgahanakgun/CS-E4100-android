@@ -55,11 +55,7 @@ public class MainActivity extends AppCompatActivity {
                     jsonImages.sortByDateRecentFirst();
                     break;
             }
-            String[] urls = new String[jsonImages.getImages().size()];
-            for(int index=0;index<jsonImages.getImages().size();index++){
-                urls[index] = jsonImages.getImages().get(index).getUrl().toString();
-            }
-            imageGridView.sampleGridViewAdapter = new SampleGridViewAdapter(getContext(),urls);
+            imageGridView.sampleGridViewAdapter = new SampleGridViewAdapter(getContext(),jsonImages.getImages());
             return imageGridView;
         }
 
