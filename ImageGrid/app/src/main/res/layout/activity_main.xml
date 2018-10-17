@@ -63,7 +63,6 @@
         android:ems="10"
         android:hint="URL..."
         android:inputType="text|textUri|textPersonName"
-        android:text="https://api.myjson.com/bins/s7200"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.18"
         app:layout_constraintStart_toEndOf="@+id/textView2"

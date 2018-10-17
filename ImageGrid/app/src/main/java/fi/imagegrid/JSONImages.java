@@ -115,7 +115,7 @@ public class JSONImages {
 
         @Override
         public int compare(JSONImage image1, JSONImage image2) {
-            return image1.getDate().compareTo(image2.getDate());
+            return image2.getDate().compareTo(image1.getDate());
         }
     }
 
