@@ -67,15 +67,6 @@ fastlane/screenshots
 fastlane/test_output
 fastlane/readme.md
 
-# The project folders below will be tracked
-!/ImageGrid/
-!/LayoutSwitcher/
-!/WordCounter/
-!/FaceDetection/
-!/nodejs/
-
-
-
 # NodeJS ignorepatters
 
 # Logs
@@ -151,3 +142,10 @@ typings/
 
 # Serverless directories
 .serverless
+
+
+# The project folders below will be tracked
+!/ImageGrid/
+!/LayoutSwitcher/
+!/WordCounter/
+!/FaceDetection/
