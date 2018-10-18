@@ -1,4 +1,4 @@
-package fi.facedetection;
+package com.example.tolgahan.imagedetection;
 
 import org.junit.Test;
 

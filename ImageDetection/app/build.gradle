@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 27
     defaultConfig {
-        applicationId "fi.facedetection"
+        applicationId "com.example.tolgahan.imagedetection"
         minSdkVersion 25
         targetSdkVersion 27
         versionCode 1
